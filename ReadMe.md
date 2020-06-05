@@ -1,6 +1,6 @@
 # AWS BOOTSTRAP
 
-A guide to deploying a simple web application to AWS. Touching each AWS infrastructure step by step by step.
+A guide to deploying a simple web application to AWS. Touching each AWS infrastructure step by step.
 
 ## Objective
 
@@ -27,3 +27,15 @@ Get a simple web application running on a single EC2 instance
     `"stop": node ./node_modules/pm2/bin/pm2 stop`
 - add a build step to package.json - Here I am using a dummy build step (Production build process actually goes here)
     `"build": "echo 'Building....'"`.
+
+### Manual Installation of AWS Infrastructure
+
+This step is to manually create a basic AWS infrastructure to host the application. Manually install the application on an EC2 instance. Note that you need to have an AWS account for the following steps.
+
+- Visit the AWS console and select any region.
+- Go to the EC2 instances section of the AWS and hit the "Launch Instance" button.
+- You'll be asked to pick an AMI(Amazon Machine Image, which is basically a set of instructions for installing the operating system and some associated software). Select default "Amazon Linux 2 AMI on x86".
+- Next, choose an instance type - the default t2.micro, which is within the AWS free tier.
+- Keep accepting default until you're asked to configure the security group. Adda rule to allow traffic to port 8080, which we configure our application to listen on.
+- Hit the "Review and Launch" buttons to get the instance started. Select Proceed without a key pair and then Launch instance.
+- The instance can be reached on the internet via the Public DNS (IPv4) shown in the console.
