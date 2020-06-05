@@ -2,11 +2,16 @@
   "name": "aws-bootstrap",
   "version": "1.0.0",
   "description": "A guide to deploying a simple web application to AWS. Touching each AWS infrastructure step by step by step.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./node_modules/pm2/bin/pm2 start server.js --name hello_aws --log ../logs/app.log",
+    "stop": "node ./node_modules/pm2/bin/pm2 stop hello_aws",
+    "build": "echo 'Building...'"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pm2": "^4.4.0"
+  }
 }
