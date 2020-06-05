@@ -1,0 +1,12 @@
+{
+  "name": "aws-bootstrap",
+  "version": "1.0.0",
+  "description": "A guide to deploying a simple web application to AWS. Touching each AWS infrastructure step by step by step.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
