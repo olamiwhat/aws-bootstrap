@@ -36,6 +36,18 @@ This step is to manually create a basic AWS infrastructure to host the applicati
 - Go to the EC2 instances section of the AWS and hit the "Launch Instance" button.
 - You'll be asked to pick an AMI(Amazon Machine Image, which is basically a set of instructions for installing the operating system and some associated software). Select default "Amazon Linux 2 AMI on x86".
 - Next, choose an instance type - the default t2.micro, which is within the AWS free tier.
-- Keep accepting default until you're asked to configure the security group. Adda rule to allow traffic to port 8080, which we configure our application to listen on.
+- Keep accepting default until you're asked to configure the security group. Add a rule to allow traffic to port 8080, which we configure our application to listen on.
 - Hit the "Review and Launch" buttons to get the instance started. Select Proceed without a key pair and then Launch instance.
 - The instance can be reached on the internet via the Public DNS (IPv4) shown in the console.
+
+### Running Application
+
+- ssh into the instance using the EC2 connect (browser-based SSH connection).
+- update the installed packages - `sudo yum -y update`
+- install node
+- download the application from github and save in a directory "aws-bootstrap-master"
+- create a log directory
+- cd into the "aws-bootstrap-master" directory
+- run `npm install`
+- run `npm start`
+- `curl http://<public_dns>:8080` to send a request to the application. The public dns can be found on the instance page.
