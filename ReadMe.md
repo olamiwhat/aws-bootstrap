@@ -44,10 +44,24 @@ This step is to manually create a basic AWS infrastructure to host the applicati
 
 - ssh into the instance using the EC2 connect (browser-based SSH connection).
 - update the installed packages - `sudo yum -y update`
-- install node
+- install node. (optional use nvm to install node)
 - download the application from github and save in a directory "aws-bootstrap-master"
+- unzip the downloaded application in a directory "app"
 - create a log directory
-- cd into the "aws-bootstrap-master" directory
+- cd into the "app" directory
 - run `npm install`
 - run `npm start`
 - `curl http://<public_dns>:8080` to send a request to the application. The public dns can be found on the instance page.
+
+## Infrastructure as Code: Create CloudFormation
+
+Recreating the infrastructure using CloudFormation.
+
+### Configuring the AWS CLI
+
+- install AWS CLI - follow instruction here [install AWS CLI] (https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+- configure an aws profile named `awsbootstrap` - follow instruction here [configure AWS Profile](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+ - test AWS config by listing the EC2 instances in your account - `aws ec2 describe-instances --profile awsbootstrap`
+
+ ### Infrastructure as Code
+
