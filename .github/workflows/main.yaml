@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           outputs: type=docker
-          tags: stable-${{github.event.repository.name}}-{{ github.sha }}
+          tags: stable-${{github.event.repository.name}}-${{ github.sha }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
