@@ -39,13 +39,6 @@ jobs:
 
       - name: check docker images
         run: docker images
-      # - name: Docker Buildx (build)
-      #   run: |
-      #     docker buildx build \
-      #       --cache-from type=local,src=/tmp/.buildx-cache \
-      #       --cache-to type=local,dest=/tmp/.buildx-cache \
-      #       --load \
-      #       --platform ${{ steps.prepare.outputs.docker_platforms }} \
-      #       --tag "${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.hash }}" \
-      #       --tag "${{ steps.prepare.outputs.repository }}-${{ github.event.client_payload.tags }}:latest" \
-      #       --file Dockerfile .
+
+      - name: push image to DockerHub
+        run: docker push ola/aws-bootstrap
