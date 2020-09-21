@@ -16,7 +16,7 @@ jobs:
           TAGS="PR-39b036f69ff1c9c1ce89a4e0c97297b9ef627320,latest"
           arrTAGS=(${TAGS//,/ })
           echo "::set-env name=SHA_TAG::${arrTAGS[0]}"
-          echo "::set-env name=LATEST::$${arrTAGS[1]}"
+          echo "::set-env name=LATEST::${arrTAGS[1]}"
 
       - name: check that strings are split
         run: |
