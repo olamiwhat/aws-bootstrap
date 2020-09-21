@@ -42,5 +42,5 @@ jobs:
 
       - name: push image to DockerHub
         run: |
-          docker tag stable-${{github.event.repository.name}}-${{ github.sha }} lakesyde/stable-${{github.event.repository.name}}-aws-bootstrap:latest
-          docker push lakesyde/stable-${{github.event.repository.name}}-aws-bootstrap:latest
+          docker tag stable-${{github.event.repository.name}}-${{ github.sha }} lakesyde/stable-${{github.event.repository.name}}-${{ github.sha }}:latest
+          docker push lakesyde/stable-${{github.event.repository.name}}-${{ github.sha }}:latest
