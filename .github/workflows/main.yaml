@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           outputs: type=docker
-          tags: stable-${{github.event.repository.name}}-aws-bootstrap
+          tags: stable-${{github.event.repository.name}}-{{ github.sha }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
@@ -42,5 +42,5 @@ jobs:
 
       - name: push image to DockerHub
         run: |
-          docker tag stable-${{github.event.repository.name}}-aws-bootstrap lakesyde/stable-${{github.event.repository.name}}-aws-bootstrap:latest
+          docker tag stable-${{github.event.repository.name}}-{{ github.sha }} lakesyde/stable-${{github.event.repository.name}}-aws-bootstrap:latest
           docker push lakesyde/stable-${{github.event.repository.name}}-aws-bootstrap:latest
