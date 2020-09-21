@@ -34,15 +34,16 @@ jobs:
         with:
           outputs: type=docker
           tags: |
-            stable-${{ github.sha }}
-            latest
+            ${{github.event.repository.name}}:stable-${{ github.sha }}
+            ${{github.event.repository.name}}:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
       - name: check docker images
         run: docker images
-      # - name: push image to DockerHub
-      #   run: |
-      #     docker tag stable-${{ github.sha }} lakesyde/${{github.event.repository.name}}:stable-${{ github.sha }}
-      #     docker tag stable-${{ github.sha }} lakesyde/${{github.event.repository.name}}:latest
-      #     docker push lakesyde/${{github.event.repository.name}}:stable-${{ github.sha }}
+
+      - name: push image to DockerHub
+        run: |
+          docker tag stable-${{ github.sha }} lakesyde/${{github.event.repository.name}}:stable-${{ github.sha }}
+          docker tag stable-${{ github.sha }} lakesyde/${{github.event.repository.name}}:latest
+          docker push lakesyde/${{github.event.repository.name}}
