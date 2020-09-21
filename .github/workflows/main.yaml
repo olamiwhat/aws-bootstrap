@@ -17,6 +17,15 @@ jobs:
           arrTAGS=(${TAGS//,/ })
           echo ${arrTAGS[0]}
           echo ${arrTAGS[1]}
+          export SHA_TAG=${arrTAGS[0]}
+          export LATEST=${arrTAGS[1]}
+          echo "::set-env name=SHA_TAG::$SHA_TAG"
+          echo "::set-env name=LATEST::$LATEST"
+
+      - name: check that strings are split
+        run: |
+          echo ${{ env.SHA_TAG }}
+          echo ${{ env.LATEST }}
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v1
       # - name: Cache Docker layers
